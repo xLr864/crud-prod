@@ -9,10 +9,8 @@ Operations are as follows:
 
 2 POST:- Add the data to the database
 
-3 PUT:- Completely modify a record
+3 UPDATE:- Modify a record either partially or completely
 
-4 PATCH:- Partially modify a record
-
-5 DELETE:- Delete existing record
+4 DELETE:- Delete existing record
 
 Developed by:- CHETAN
