@@ -1,0 +1,48 @@
+{% extends 'Games_Frontend/index.html' %}
+{% block content %}
+<div class='row'>
+    <div class="col-sm-4">
+        <h4 class="m-5 text-center alert alert-info">Add Game reviews</h4>
+        <form action="" method="POST" class="container m-4">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="Add">
+        </form>
+    </div>
+    <div class="col-sm-7 offset 1">
+        <h4 class="m-5 text-center alert alert-info">Reviews</h4>
+        {% if views %}
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Ratting</th>
+                    <th scope="col">Review</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for record in views %}
+                        <tr>
+                            <th scope="row">{{record.id}}</th>
+                            <td>{{record.title}}</td>
+                            <td>{{record.ratting}}</td>
+                            <td>{{record.verdict}}</td>
+                            <td>
+                                <a href="{% url 'upd' record.id %}" class='btn btn-warning btn-sm'>Update</a>
+                                <form action="{% url 'dl' record.id %}" method="POST" class="d-inline">
+                                    {% csrf_token %}
+                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+        <h4 class="m-5 text-center alert alert-warning">Table underflow</h4>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
