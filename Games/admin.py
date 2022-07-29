@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Review
+from .models import Product
 # Register your models here.
-@admin.register(Review)
+@admin.register(Product)
 class adminxs(admin.ModelAdmin):
-    list_display = ('id','title','ratting','verdict')
+    list_display = ('id','title','description','price','summary')

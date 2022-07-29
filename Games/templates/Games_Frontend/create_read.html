@@ -2,7 +2,7 @@
 {% block content %}
 <div class='row'>
     <div class="col-sm-4">
-        <h4 class="m-5 text-center alert alert-info">Add Game reviews</h4>
+        <h4 class="m-5 text-center alert alert-info">Add Product List</h4>
         <form action="" method="POST" class="container m-4">
             {% csrf_token %}
             {{form.as_p}}
@@ -10,15 +10,16 @@
         </form>
     </div>
     <div class="col-sm-7 offset 1">
-        <h4 class="m-5 text-center alert alert-info">Reviews</h4>
+        <h4 class="m-5 text-center alert alert-info">Data</h4>
         {% if views %}
             <table class="table table-hover">
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Title</th>
-                    <th scope="col">Ratting</th>
-                    <th scope="col">Review</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Summary</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -27,8 +28,9 @@
                         <tr>
                             <th scope="row">{{record.id}}</th>
                             <td>{{record.title}}</td>
-                            <td>{{record.ratting}}</td>
-                            <td>{{record.verdict}}</td>
+                            <td>{{record.description}}</td>
+                            <td>{{record.price}}</td>
+                            <td>{{record.summary}}</td>
                             <td>
                                 <a href="{% url 'upd' record.id %}" class='btn btn-warning btn-sm'>Update</a>
                                 <form action="{% url 'dl' record.id %}" method="POST" class="d-inline">
